@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --panel: #f8fafc;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+.theme-dark {
+  --bg: #0b1220;
+  --panel: #071021;
+  --text: #e6eef6;
+  --muted: #9aa6b2;
+  --border: #1f2937;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* base font & app sizing */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* CipherStudio minimal modern UI tokens */
+.cs-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  height: 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), transparent);
+}
+
+.cs-editor .cs-panel {
+  height: calc(100vh - 120px);
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 12px;
+  align-items: stretch;
+}
+.cs-main {
+  display: grid;
+  grid-template-columns: 48px 300px 1fr; /* activity bar, explorer, editor */
+  gap: 16px;
+  padding: 12px;
+  flex: 1;
+  min-height: 0; /* allow children to scroll */
+}
+
+.cs-panel {
+  background: var(--panel);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+
+.cs-explorer {
+  padding: 8px 6px;
+}
+
+.cs-editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.cs-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text);
+}
+.cs-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* modern buttons */
+.cs-btn-primary {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12);
+}
+.cs-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+/* auth card */
+.cs-auth-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.cs-auth-card {
+  width: 380px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.18);
+}
+
+/* overlay for center modal */
+.cs-auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+.cs-auth-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.cs-auth-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.cs-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.cs-input:focus {
+  outline: none;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.06);
+  border-color: rgba(99, 102, 241, 0.6);
+}
+.cs-form-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* header polish */
+.cs-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.cs-brand {
+  font-weight: 800;
+  font-size: 18px;
+}
+.cs-navbar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* explorer polishing */
+.cs-explorer {
+  width: 300px;
+  padding: 12px;
+}
+.cs-explorer .cs-panel {
+  height: calc(100vh - 120px);
+  overflow: auto;
+  padding: 12px;
+}
+
+/* Activity bar (left vertical icons) */
+.cs-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 6px;
+}
+.cs-activity .act-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.cs-activity .act-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text);
+}
+.cs-activity .act-btn.active {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.12), transparent);
+  color: #6b46c1;
+}
+
+/* Tab bar above editor */
+.cs-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  overflow-x: auto;
+}
+.cs-tab {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+}
+.cs-tab.active {
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 -2px 0 rgba(99, 102, 241, 0.08) inset;
+}
+.cs-tab .close {
+  font-size: 12px;
+  margin-left: 6px;
+  color: rgba(0, 0, 0, 0.3);
+}
+.cs-tab .close:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* editor panel */
+.cs-editor .cs-panel {
+  height: calc(100vh - 120px);
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 12px;
+}
+
+/* make inner areas scroll correctly */
+.code-area,
+.preview-area {
+  min-height: 0;
+  overflow: auto;
+}
+
+.cs-file {
+  padding: 8px 6px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cs-file:hover {
+  background: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}
+
+.cs-small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cs-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.explorer-list {
+  max-height: 60vh;
+  overflow: auto;
+  border-radius: 6px;
+  padding: 6px;
+  background: transparent;
+}
+
+/* subtle custom scrollbar */
+.explorer-list::-webkit-scrollbar,
+.cs-explorer .cs-panel::-webkit-scrollbar,
+.cs-editor .cs-panel::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.explorer-list::-webkit-scrollbar-thumb,
+.cs-explorer .cs-panel::-webkit-scrollbar-thumb,
+.cs-editor .cs-panel::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.file-name {
+  font-size: 13px;
+}
