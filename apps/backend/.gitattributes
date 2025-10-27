@@ -1,0 +1,12 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force shell scripts and other Linux executables to use LF
+*.sh text eol=lf
+
+# Force batch files to use CRLF (Windows)
+*.bat text eol=crlf
+
+# Treat binary files as binary, do not modify endings
+*.png binary
+*.jpg binary
